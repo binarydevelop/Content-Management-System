@@ -172,8 +172,7 @@ export default function EditEvent() {
             <label className="block text-lg text-gray-700 mb-2">Cover Image</label>
             <input
               type="file"
-              name="files"
-              defaultValue={data.data.coverImageUrl}
+              name="coverImage"
               onChange={(e) => setCoverImage(e.target.files ? e.target.files[0] : null)}
               className="w-full"
             />
@@ -183,8 +182,7 @@ export default function EditEvent() {
             <label className="block text-lg text-gray-700 mb-2">Thumbnail Image</label>
             <input
               type="file"
-              name="files"
-              defaultValue={data.data.thumbnailImageUrl}
+              name="thumbnailImage"
               onChange={(e) => setThumbnailImage(e.target.files ? e.target.files[0] : null)}
               className="w-full"
             />
@@ -194,8 +192,7 @@ export default function EditEvent() {
             <label className="block text-lg text-gray-700 mb-2">Icon Image</label>
             <input
               type="file"
-              name="files"
-              defaultValue={data.data.iconImageUrl}
+              name="iconImage"
               onChange={(e) => setIconImage(e.target.files ? e.target.files[0] : null)}
               className="w-full"
             />
