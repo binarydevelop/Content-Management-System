@@ -46,3 +46,28 @@ export async function fetchEventDetails(uuid: string) {
     return response.json();
   }
   
+  export async function deleteEvent(uuid: string) {
+
+  }
+
+  export const updateEvent = async (uuid: string, formData: FormData) => {
+    try {
+        const apiUrl = new URL(`${process.env.API_BASE_URL}/${process.env.API_VERSION}/events/update/${uuid}`);
+        const response = await fetch(apiUrl.toString(), {
+            method: 'PUT',
+            headers: {
+                accept: "application/json",
+                Authorization: `Bearer ${process.env.API_AUTH_TOKEN}`,
+            },
+            body: formData
+        });
+
+      if (!response.ok) {
+        throw new Error(`Status: ${response.status}, Message: ${response.statusText}`);
+      }
+      return response.json();
+    } catch (error) {
+      console.error("Error updating event:", error);
+      throw error;
+    }
+  };
