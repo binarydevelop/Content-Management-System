@@ -11,8 +11,6 @@ export const loader: LoaderFunction = async () => {
     });
 };
 
-
-
 export const action: ActionFunction = async ({ request }) => {
     const formData = await request.formData();
     const eventType = formData.get('eventType')
@@ -31,7 +29,6 @@ export const action: ActionFunction = async ({ request }) => {
     }
 };
 
-
 const mapEventType = (type: string) => {
     switch (type) {
         case "cinema hall":
@@ -46,7 +43,6 @@ const mapEventType = (type: string) => {
             return "unknown";
     }
 };
-
 
 export default function CreateEvent() {
     const navigate = useNavigate();
@@ -105,6 +101,7 @@ export default function CreateEvent() {
 
                     {eventType === "cinema hall" && (
                         <>
+                            {/* Cinema Hall Fields */}
                             <div>
                                 <label htmlFor="title" className="block font-medium text-xl text-gray-700">
                                     Title
@@ -265,12 +262,189 @@ export default function CreateEvent() {
                             </div>
                         </>
                     )}
-                    <button
-                        type="submit"
-                        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                    >
-                        Create Event
-                    </button>
+
+                    {eventType === "workshop" && (
+                        <>
+                            {/* Workshop Specific Fields */}
+                            <div>
+                                <label htmlFor="title" className="block font-medium text-xl text-gray-700">
+                                    Title
+                                </label>
+                                <input
+                                    type="text"
+                                    id="title"
+                                    name="title"
+                                    required
+                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="description" className="block font-medium text-xl text-gray-700">
+                                    Description
+                                </label>
+                                <textarea
+                                    id="description"
+                                    name="description"
+                                    rows={4}
+                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="eventStartDate" className="block font-medium text-xl text-gray-700">
+                                    Event Start Date
+                                </label>
+                                <input
+                                    type="datetime-local"
+                                    id="eventStartDate"
+                                    name="eventStartDate"
+                                    required
+                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="eventStartTime" className="block font-medium text-xl text-gray-700">
+                                    Event Start Time
+                                </label>
+                                <input
+                                    type="text"
+                                    id="eventStartTime"
+                                    name="eventStartTime"
+                                    required
+                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="eventEndDate" className="block font-medium text-xl text-gray-700">
+                                    Event End Date
+                                </label>
+                                <input
+                                    type="datetime-local"
+                                    id="eventEndDate"
+                                    name="eventEndDate"
+                                    required
+                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="eventEndTime" className="block font-medium text-xl text-gray-700">
+                                    Event End Time
+                                </label>
+                                <input
+                                    type="text"
+                                    id="eventEndTime"
+                                    name="eventEndTime"
+                                    required
+                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="eventLocation" className="block font-medium text-xl text-gray-700">
+                                    Event Location
+                                </label>
+                                <input
+                                    type="text"
+                                    id="eventLocation"
+                                    name="eventLocation"
+                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="eventLink" className="block font-medium text-xl text-gray-700">
+                                    Event Link
+                                </label>
+                                <input
+                                    type="url"
+                                    id="eventLink"
+                                    name="eventLink"
+                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                />
+                            </div>
+                            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div>
+                                    <label className="block text-lg text-gray-700 mb-2">Cover Image</label>
+                                    <input
+                                        type="file"
+                                        id="coverImage"
+                                        name="coverImage"
+                                        className="w-full"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-lg text-gray-700 mb-2">Thumbnail Image</label>
+                                    <input
+                                        type="file"
+                                        id="thumbnailImage"
+                                        name="thumbnailImage"
+                                        className="w-full"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-lg text-gray-700 mb-2">Icon Image</label>
+                                    <input
+                                        type="file"
+                                        id="iconImage"
+                                        name="iconImage"
+                                        className="w-full"
+                                    />
+                                </div>
+                            </div>
+                            <div>
+                                <label htmlFor="priority" className="block font-medium text-xl text-gray-700">
+                                    Priority
+                                </label>
+                                <input
+                                    type="number"
+                                    id="priority"
+                                    name="priority"
+                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="isActive" className="block font-medium text-xl text-gray-700">
+                                    Is Active
+                                </label>
+                                <input
+                                    type="checkbox"
+                                    id="isActive"
+                                    name="isActive"
+                                    checked={isActive}
+                                    onChange={(e) => setIsActive(e.target.checked)}
+                                    className="mt-1"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="isActiveWeb" className="block font-medium text-xl text-gray-700">
+                                    Is Active on Web
+                                </label>
+                                <input
+                                    type="checkbox"
+                                    id="isActiveWeb"
+                                    name="isActiveWeb"
+                                    checked={isActiveWeb}
+                                    onChange={(e) => setIsActiveWeb(e.target.checked)}
+                                    className="mt-1"
+                                />
+                            </div>
+                        </>
+                    )}
+
+                    <div className="mt-6">
+                        <button
+                            type="submit"
+                            className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
+                        >
+                            Create Event
+                        </button>
+                        <button
+                            type="button"
+                            className="inline-flex items-center justify-center px-4 py-2 ml-4 border border-transparent text-base font-medium rounded-md shadow-sm text-gray-700 bg-white border-gray-300 hover:bg-gray-50"
+                            onClick={() => navigate("/events")}
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </Form>
             </div>
         </div>
