@@ -7,15 +7,15 @@ export const loader = async ({ request }: { request: Request }) => {
   const page = parseInt(url.searchParams.get("page") || "1", 10);
   const perPage = parseInt(url.searchParams.get("perPage") || "25", 10);
 
-  return fetchEvents({ page, perPage, eventType: 'movie' });
+  return fetchEvents({ page, perPage, eventType: 'online' });
 };
 
-export default function Cinema() {
+export default function Workshop() {
   const data: any = useLoaderData();
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">Cinema Hall Movies</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Workshops</h1>
 
       <div className="flex flex-col items-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl w-full">

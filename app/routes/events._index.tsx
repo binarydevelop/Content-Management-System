@@ -38,7 +38,7 @@ const Events = () => {
           </div>
         </Link>
         <Link
-          to="/events/workshops"
+          to="/events/workshop"
           className="relative group flex flex-col items-center"
         >
           <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
