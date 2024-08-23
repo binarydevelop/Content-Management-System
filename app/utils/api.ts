@@ -71,3 +71,24 @@ export async function fetchEventDetails(uuid: string) {
       throw error;
     }
   };
+
+  export async function createEvent(formData: FormData, eventType: string, config: {baseUrl: any, apiToken: any, apiVersion: any }) {  
+    console.log(eventType, '@@')
+    const response = await fetch(`${config.baseUrl}/${config.apiVersion}/events/create?eventType=${eventType}`, {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${config.apiToken}`,
+      },
+
+      body: formData,
+    });
+  
+    if (!response.ok) {
+      console.error(`Failed to create event. Status: ${response.status}. Response: ${await response.text()}`);
+      throw new Error(`Failed to create event: ${response.statusText}`);
+    }
+  
+    return response.json();
+  }
+  

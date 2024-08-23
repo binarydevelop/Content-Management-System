@@ -6,12 +6,24 @@ import {
   PuzzlePieceIcon,
   RectangleGroupIcon,
   WrenchScrewdriverIcon,
+  PlusCircleIcon,
 } from "@heroicons/react/24/solid";
 
 const Events = () => {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">Event Categories</h1>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold">Event Categories</h1>
+        <Link
+          to="/events/create"
+          className="flex items-center justify-center text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full sm:w-auto"
+        >
+          <PlusCircleIcon className="w-5 h-5 mr-2" />
+          <span className="whitespace-nowrap">Create New Event</span>
+        </Link>
+      </div>
+
+
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         <Link
           to="/events/cinema"
