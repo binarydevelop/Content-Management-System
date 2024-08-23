@@ -7,6 +7,7 @@ import {
   RectangleGroupIcon,
   WrenchScrewdriverIcon,
   PlusCircleIcon,
+  CalendarDaysIcon,
 } from "@heroicons/react/24/solid";
 
 const Events = () => {
@@ -23,7 +24,7 @@ const Events = () => {
         </Link>
       </div>
 
-
+      {/* First row of event categories */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         <Link
           to="/events/cinema"
@@ -67,15 +68,33 @@ const Events = () => {
           </div>
           <div className="mt-2 text-center text-lg font-semibold">Games</div>
         </Link>
+      </div>
+
+      {/* Horizontal line to separate sections */}
+      <hr className="my-8 border-gray-300" />
+
+      {/* Second row with Event Registrations */}
+      <div className="grid grid-cols-3 mx-auto gap-4">
         <Link
           to="/events/registrations"
           className="relative group flex flex-col items-center"
         >
-          <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-gray-200 transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
+          <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl  transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-2xl">
             <RectangleGroupIcon className="w-16 h-16 text-gray-700" />
           </div>
           <div className="mt-2 text-center text-lg font-semibold">
             Event Registrations
+          </div>
+        </Link>
+        <Link
+          to="/events/calendar"
+          className="relative group flex flex-col items-center"
+        >
+          <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl  transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-2xl">
+            <CalendarDaysIcon className="w-16 h-16 text-gray-700" />
+          </div>
+          <div className="mt-2 text-center text-lg font-semibold">
+            Event Calendar
           </div>
         </Link>
       </div>
