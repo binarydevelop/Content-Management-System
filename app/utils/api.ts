@@ -1,15 +1,17 @@
 
-export async function fetchMovies({
+export async function fetchEvents({
     page,
     perPage,
+    eventType
 }: {
     page: number;
     perPage: number;
+    eventType: string;
 }) {
-    const apiUrl = new URL(`${process.env.API_BASE_URL}/${process.env.API_VERSION}/events/movies`);
+    const apiUrl = new URL(`${process.env.API_BASE_URL}/${process.env.API_VERSION}/events/listing`);
     apiUrl.searchParams.append("page", page.toString());
     apiUrl.searchParams.append("perPage", perPage.toString());
-
+    apiUrl.searchParams.append("eventType", eventType);
     const response = await fetch(apiUrl.toString(), {
         headers: {
             accept: "application/json",
@@ -18,7 +20,7 @@ export async function fetchMovies({
     });
 
     if (!response.ok) {
-        throw new Error("Failed to fetch movies");
+        throw new Error(`Failed to fetch ${eventType}`);
     }
 
     const data = await response.json();
@@ -73,7 +75,6 @@ export async function fetchEventDetails(uuid: string) {
   };
 
   export async function createEvent(formData: FormData, eventType: string, config: {baseUrl: any, apiToken: any, apiVersion: any }) {  
-    console.log(eventType, '@@')
     const response = await fetch(`${config.baseUrl}/${config.apiVersion}/events/create?eventType=${eventType}`, {
       method: "POST",
       headers: {

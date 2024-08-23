@@ -47,46 +47,118 @@ export default function MovieDetails() {
         {data.data.title ?? data.data.extendedTitle}
       </h1>
       <img
-        src={data.data.coverImageUrl ?? '/images/movie-fallback.jpg'}
+        src={data.data.coverImageUrl ?? "/images/movie-fallback.jpg"}
         alt={data.data.title}
         className="mb-6 w-full h-auto object-cover rounded-lg shadow-md"
       />
-      <p className="text-lg text-gray-700 mb-6">
-        <strong className="text-gray-900">Storyline:</strong> {data.data.storyLine}
-      </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        <div>
-          <p className="text-lg text-gray-700 mb-2">
-            <strong className="text-gray-900">Director:</strong> {data.data.director}
+      {/* Conditional Details based on eventMediaType */}
+      {data.data.eventMediaType === "movie" && (
+        <>
+          <p className="text-lg text-gray-700 mb-6">
+            <strong className="text-gray-900">Storyline:</strong>{" "}
+            {data.data.storyLine}
           </p>
-          <p className="text-lg text-gray-700 mb-2">
-            <strong className="text-gray-900">Cast:</strong> {data.data.cast}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <p className="text-lg text-gray-700 mb-2">
+                <strong className="text-gray-900">Director:</strong>{" "}
+                {data.data.director}
+              </p>
+              <p className="text-lg text-gray-700 mb-2">
+                <strong className="text-gray-900">Cast:</strong> {data.data.cast}
+              </p>
+              <p className="text-lg text-gray-700 mb-2">
+                <strong className="text-gray-900">Trivia:</strong>{" "}
+                {data.data.trivia}
+              </p>
+            </div>
+          </div>
+        </>
+      )}
+
+      {data.data.eventMediaType === "other" && (
+        <>
+          <p className="text-lg text-gray-700 mb-6">
+            <strong className="text-gray-900">Description:</strong>{" "}
+            {data.data.description}
           </p>
-          <p className="text-lg text-gray-700 mb-2">
-            <strong className="text-gray-900">Trivia:</strong> {data.data.trivia}
-          </p>
-        </div>
-      </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <p className="text-lg text-gray-700 mb-2">
+                <strong className="text-gray-900">Event Location:</strong>{" "}
+                {data.data.eventLocation}
+              </p>
+              <p className="text-lg text-gray-700 mb-2">
+                <strong className="text-gray-900">Event Link:</strong>{" "}
+                <a
+                  href={data.data.eventLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 underline"
+                >
+                  {data.data.eventLink}
+                </a>
+              </p>
+              <p className="text-lg text-gray-700 mb-2">
+                <strong className="text-gray-900">Event Start Date:</strong>{" "}
+                {new Date(data.data.eventStartDate).toLocaleDateString()}{" "}
+                {data.data.eventStartTime}
+              </p>
+              <p className="text-lg text-gray-700 mb-2">
+                <strong className="text-gray-900">Event End Date:</strong>{" "}
+                {new Date(data.data.eventEndDate).toLocaleDateString()}{" "}
+                {data.data.eventEndTime}
+              </p>
+              <p className="text-lg text-gray-700 mb-2">
+                <strong className="text-gray-900">Location Address:</strong>{" "}
+                {data.data.locationAddress ?? "N/A"}
+              </p>
+              <p className="text-lg text-gray-700 mb-2">
+                <strong className="text-gray-900">Additional Notes:</strong>{" "}
+                {data.data.additionalNotes ?? "N/A"}
+              </p>
+            </div>
+          </div>
+        </>
+      )}
 
       {/* Metadata Section */}
       <div className="mt-8 p-4 rounded-lg shadow-2xl">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Additional Details</h2>
+        <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          Additional Details
+        </h2>
         <p className="text-lg text-gray-700 mb-2">
-          <strong className="text-gray-900">YouTube Video Id:</strong> {data.data.videoId}
+          <strong className="text-gray-900">Event Media Type:</strong>{" "}
+          {data.data.eventMediaType}
+        </p>
+        {data.data.eventMediaType === "movie" && (
+          <>
+            <p className="text-lg text-gray-700 mb-2">
+              <strong className="text-gray-900">YouTube Video Id:</strong>{" "}
+              {data.data.videoId}
+            </p>
+          </>
+        )}
+        <p className="text-lg text-gray-700 mb-2">
+          <strong className="text-gray-900">Is Active:</strong>{" "}
+          {data.data.isActive ? "Yes" : "No"}
         </p>
         <p className="text-lg text-gray-700 mb-2">
-          <strong className="text-gray-900">Is Active:</strong> {data.data.isActive ? "Yes" : "No"}
+          <strong className="text-gray-900">Is Active on Web:</strong>{" "}
+          {data.data.isActiveWeb ? "Yes" : "No"}
         </p>
         <p className="text-lg text-gray-700 mb-2">
-          <strong className="text-gray-900">Is Active on Web:</strong> {data.data.isActiveWeb ? "Yes" : "No"}
+          <strong className="text-gray-900">Like Count:</strong>{" "}
+          {data.data.likeCount}
         </p>
-        <p className="text-lg text-gray-700 mb-2">
-          <strong className="text-gray-900">Like Count:</strong> {data.data.likeCount}
-        </p>
-        <p className="text-lg text-gray-700 mb-2">
-          <strong className="text-gray-900">Priority:</strong> {data.data.priority}
-        </p>
+        {(data.data.eventMediaType === "movie" ||
+          data.data.eventMediaType === "other") && (
+          <p className="text-lg text-gray-700 mb-2">
+            <strong className="text-gray-900">Priority:</strong>{" "}
+            {data.data.priority ?? "N/A"}
+          </p>
+        )}
       </div>
 
       {/* Images Row */}
@@ -117,19 +189,16 @@ export default function MovieDetails() {
           </div>
         )}
 
-        {data.data.iconImageUrl && (
+        {data.data.iconUrl && (
           <div className="flex flex-col items-center">
             <p className="text-lg text-gray-600 mt-2 break-words">
               <strong className="text-gray-900">Icon Image:</strong>
             </p>
             <img
-              src={data.data.iconImageUrl}
+              src={data.data.iconUrl}
               alt="Icon"
               className="w-16 h-16 object-cover rounded shadow-2xl"
             />
-            <p className="text-sm text-gray-600 mt-2 break-words">
-              <strong className="text-gray-900">Icon Image URL:</strong> {data.data.iconImageUrl}
-            </p>
           </div>
         )}
       </div>
