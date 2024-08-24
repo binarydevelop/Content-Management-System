@@ -76,9 +76,9 @@ export default function CreateEvent() {
                             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
                         >
                             <option value="cinema hall">Cinema Hall</option>
-                            <option value="workshop">Workshop</option>
+                            {/* <option value="workshop">Workshop</option>
                             <option value="pop-up-club">Pop-up Club</option>
-                            <option value="games">Games</option>
+                            <option value="games">Games</option> */}
                         </select>
                     </div>
 
