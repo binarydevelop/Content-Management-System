@@ -38,7 +38,8 @@ const Events = () => {
           </div>
         </Link>
         <Link
-          to="/events/workshop"
+          // to="/events/workshop"
+          to="/events"
           className="relative group flex flex-col items-center"
         >
           <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
@@ -49,7 +50,8 @@ const Events = () => {
           </div>
         </Link>
         <Link
-          to="/events/pop-up-club"
+          // to="/events/pop-up-club"
+          to="/events"
           className="relative group flex flex-col items-center"
         >
           <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
@@ -60,7 +62,8 @@ const Events = () => {
           </div>
         </Link>
         <Link
-          to="/events/games"
+          // to="/events/games"
+          to="/events"
           className="relative group flex flex-col items-center"
         >
           <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
