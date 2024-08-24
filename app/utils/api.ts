@@ -93,3 +93,38 @@ export async function fetchEventDetails(uuid: string) {
     return response.json();
   }
   
+// utils/api.ts
+
+export async function fetchAllEvents() {
+  const apiUrl = new URL(`${process.env.API_BASE_URL}/${process.env.API_VERSION}/events/all`);
+  const response = await fetch(apiUrl.toString(), {
+      headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${process.env.API_AUTH_TOKEN}`,
+      },
+  });
+  
+  if (!response.ok) {
+    throw new Error("Failed to fetch events");
+  }
+
+  return response.json();
+}
+
+export async function fetchEventUsers(eventId: string, config: {baseUrl: any, apiToken: any, apiVersion: any }) {
+
+  const apiUrl = new URL(`${config.baseUrl}/${config.apiVersion}/events/registrations/${eventId}`);
+  console.log(apiUrl, config)
+  const response = await fetch(apiUrl.toString(), {
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${config.apiToken}`,
+    },
+  });
+  
+  if (!response.ok) {
+    throw new Error("Failed to fetch event regiostrations.");
+  }
+
+  return response.json();
+}
