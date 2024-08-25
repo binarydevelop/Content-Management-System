@@ -24,7 +24,7 @@ export default function EventsListing() {
         apiToken: data.config.apiAuthToken,
         apiVersion: data.config.apiVersion,
     });
-console.log(selectedEventUsers)
+
     setSelectedEventUsers(userData.data);
     setModalOpen(true);
   };
