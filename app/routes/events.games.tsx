@@ -1,6 +1,6 @@
 // routes/events.cinema.tsx
 import { Link, Outlet, useLoaderData } from "@remix-run/react";
-import { fetchEvents } from "~/utils/api";
+import { fetchEvents } from "~/utils/events-api";
 
 export const loader = async ({ request }: { request: Request }) => {
   const url = new URL(request.url);

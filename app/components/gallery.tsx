@@ -27,12 +27,12 @@ const Gallery = () => {
           Media Library
         </div>
       </a>
-      <a href="/path-to-detail-page-3" className="group">
+      <a href="/users" className="group">
         <div className="flex items-center justify-center h-48 w-full rounded-lg shadow-lg overflow-hidden">
           <img
             className="h-auto max-w-full rounded-lg object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-110 group-hover:opacity-90"
             src="/images/user.png"
-            alt="Gallery Image 3"
+            alt="Users"
           />
         </div>
         <div className="mt-2 text-center text-lg font-semibold group-hover:text-blue-600 transition-colors duration-300">

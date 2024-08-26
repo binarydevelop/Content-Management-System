@@ -31,7 +31,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="mb-4">
-            <Link to="/categories" className="flex items-center py-2 px-4 rounded hover:bg-gray-700">
+            <Link to="/" className="flex items-center py-2 px-4 rounded hover:bg-gray-700">
               <UserIcon className="w-6 h-6 mr-3" />
               Users
             </Link>

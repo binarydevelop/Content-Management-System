@@ -1,5 +1,5 @@
 import { useLoaderData, useNavigate } from "@remix-run/react";
-import { fetchEventDetails } from "~/utils/api";
+import { fetchEventDetails } from "~/utils/events-api";
 
 export const loader = async ({ params }: { params: { uuid: string } }) => {
   const { uuid } = params;

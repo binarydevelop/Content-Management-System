@@ -1,6 +1,6 @@
 import { json, redirect, LoaderFunction, ActionFunction } from "@remix-run/node";
 import { Form, useLoaderData, useNavigate } from "@remix-run/react";
-import { createEvent } from "~/utils/api";
+import { createEvent } from "~/utils/events-api";
 import { useState } from "react";
 
 export const loader: LoaderFunction = async () => {
@@ -76,8 +76,8 @@ export default function CreateEvent() {
                             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
                         >
                             <option value="cinema hall">Cinema Hall</option>
-                            {/* <option value="workshop">Workshop</option>
-                            <option value="pop-up-club">Pop-up Club</option>
+                            <option value="workshop">Workshop</option>
+                            {/* <option value="pop-up-club">Pop-up Club</option>
                             <option value="games">Games</option> */}
                         </select>
                     </div>

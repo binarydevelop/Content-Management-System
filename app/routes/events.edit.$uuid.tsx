@@ -1,5 +1,5 @@
 import { useLoaderData, useNavigate, Form } from "@remix-run/react";
-import { fetchEventDetails, updateEvent } from "~/utils/api"; // Ensure this API call is correctly implemented
+import { fetchEventDetails, updateEvent } from "~/utils/events-api"; // Ensure this API call is correctly implemented
 import { useState, useEffect } from "react";
 import { redirect } from "@remix-run/node";
 

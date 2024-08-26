@@ -1,5 +1,5 @@
 import { useLoaderData } from "@remix-run/react";
-import { fetchAllEvents, fetchEventUsers } from "~/utils/api";
+import { fetchAllEvents, fetchEventUsers } from "~/utils/events-api";
 import { useState } from "react";
 
 export const loader = async () => {
