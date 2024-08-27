@@ -77,8 +77,8 @@ export default function CreateEvent() {
                         >
                             <option value="cinema hall">Cinema Hall</option>
                             <option value="workshop">Workshop</option>
-                            {/* <option value="pop-up-club">Pop-up Club</option>
-                            <option value="games">Games</option> */}
+                            {/* <option value="pop-up-club">Pop-up Club</option> */}
+                            <option value="games">Games</option>
                         </select>
                     </div>
 
