@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 import { redirect } from "@remix-run/node";
 
 export const loader = async ({ params }: { params: { uuid: string } }) => {
-    const { uuid } = params;
-    const data = await fetchEventDetails(uuid); // Replace with your API call
-    if (!data || !data.data) {
-      throw new Response("Event not found", { status: 404 });
-    }
-    return data;
+  const { uuid } = params;
+  const data = await fetchEventDetails(uuid); // Replace with your API call
+  if (!data || !data.data) {
+    throw new Response("Event not found", { status: 404 });
+  }
+  return data;
 };
 
 export const action = async ({ request, params }: { request: Request, params: { uuid: string } }) => {
@@ -43,7 +43,7 @@ export default function EditEvent() {
   return (
     <div className="p-6 max-w-5xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
       <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-        Edit Event: {data.data.title}
+        Edit Event: {data.data.title ?? data.data.extendedTitleLine}
       </h1>
 
       <Form method="put" encType="multipart/form-data">
@@ -58,53 +58,104 @@ export default function EditEvent() {
             />
           </div>
 
-          <div>
-            <label className="block text-lg text-gray-700 mb-2">Storyline</label>
-            <textarea
-              name="storyLine"
-              defaultValue={data.data.storyLine || ''}
-              className="w-full px-4 py-2 rounded-lg border shadow-sm"
-            />
-          </div>
+          {data.data.eventMediaType === 'movie' && (
+            <>
+              <div>
+                <label className="block text-lg text-gray-700 mb-2">Storyline</label>
+                <textarea
+                  name="storyLine"
+                  defaultValue={data.data.storyLine || ''}
+                  className="w-full px-4 py-2 rounded-lg border shadow-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-lg text-gray-700 mb-2">Director</label>
+                <input
+                  type="text"
+                  name="director"
+                  defaultValue={data.data.director || ''}
+                  className="w-full px-4 py-2 rounded-lg border shadow-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-lg text-gray-700 mb-2">Cast</label>
+                <input
+                  type="text"
+                  name="cast"
+                  defaultValue={data.data.cast || ''}
+                  className="w-full px-4 py-2 rounded-lg border shadow-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-lg text-gray-700 mb-2">Trivia</label>
+                <textarea
+                  name="trivia"
+                  defaultValue={data.data.trivia || ''}
+                  className="w-full px-4 py-2 rounded-lg border shadow-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-lg text-gray-700 mb-2">YouTube Video Id</label>
+                <input
+                  type="text"
+                  name="videoId"
+                  defaultValue={data.data.videoId || ''}
+                  className="w-full px-4 py-2 rounded-lg border shadow-sm"
+                />
+              </div>
 
-          <div>
-            <label className="block text-lg text-gray-700 mb-2">Director</label>
-            <input
-              type="text"
-              name="director"
-              defaultValue={data.data.director || ''}
-              className="w-full px-4 py-2 rounded-lg border shadow-sm"
-            />
-          </div>
+            </>
+          )}
 
-          <div>
-            <label className="block text-lg text-gray-700 mb-2">Cast</label>
-            <input
-              type="text"
-              name="cast"
-              defaultValue={data.data.cast || ''}
-              className="w-full px-4 py-2 rounded-lg border shadow-sm"
-            />
-          </div>
+          {data.data.eventMediaType === 'other' && (
+            <>
+              <div>
+                <label className="block text-lg text-gray-700 mb-2">Description</label>
+                <textarea
+                  name="description"
+                  defaultValue={data.data.description || ''}
+                  className="w-full px-4 py-2 rounded-lg border shadow-sm"
+                />
+              </div>
+              <div>
+                <label htmlFor="eventLocation" className="block font-medium text-xl text-gray-700">
+                  Event Location
+                </label>
+                <input
+                  type="text"
+                  id="eventLocation"
+                  name="eventLocation"
+                  defaultValue={data.data.eventLocation || ''}
+                  className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label htmlFor="eventLink" className="block font-medium text-xl text-gray-700">
+                  Event Link
+                </label>
+                <input
+                  type="text"
+                  id="eventLink"
+                  name="eventLink"
+                  defaultValue={data.data.eventLink || ''}
+                  className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
 
-          <div>
-            <label className="block text-lg text-gray-700 mb-2">Trivia</label>
-            <textarea
-              name="trivia"
-              defaultValue={data.data.trivia || ''}
-              className="w-full px-4 py-2 rounded-lg border shadow-sm"
-            />
-          </div>
-
-          <div>
-            <label className="block text-lg text-gray-700 mb-2">YouTube Video Id</label>
-            <input
-              type="text"
-              name="videoId"
-              defaultValue={data.data.videoId || ''}
-              className="w-full px-4 py-2 rounded-lg border shadow-sm"
-            />
-          </div>
+            </>
+          )}
+          {data.data.eventMediaType == 'carnival' && (
+            <>
+              <div>
+                <label className="block text-lg text-gray-700 mb-2">Location Address</label>
+                <textarea
+                  name="locationAddress"
+                  defaultValue={data.data.locationAddress || ''}
+                  className="w-full px-4 py-2 rounded-lg border shadow-sm"
+                />
+              </div>
+            </>
+          )}
 
           <div>
             <label className="block text-lg text-gray-700 mb-2">Is Active</label>
@@ -150,6 +201,34 @@ export default function EditEvent() {
                 name="eventStartDate"
                 defaultValue={data.data.eventStartDate ? new Date(data.data.eventStartDate).toISOString().split('T')[0] : ''}
                 className="w-full px-4 py-2 rounded-lg border shadow-sm"
+              />
+            </div>
+          )}
+          {data?.data?.eventStartTime && (
+            <div>
+              <label htmlFor="eventStartTime" className="block font-medium text-xl text-gray-700">
+                Event Start Time
+              </label>
+              <input
+                type="text"
+                id="eventStartTime"
+                name="eventStartTime"
+                defaultValue={data.data.eventStartTime ? data.data.eventStartTime : ''}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              />
+            </div>
+          )}
+          {data?.data?.EventEndTime && (
+            <div>
+              <label htmlFor="eventStartTime" className="block font-medium text-xl text-gray-700">
+                Event End Time
+              </label>
+              <input
+                type="text"
+                id="eventStartTime"
+                name="eventStartTime"
+                defaultValue={data.data.EventEndTime ? data.data.EventEndTime : ''}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
               />
             </div>
           )}
