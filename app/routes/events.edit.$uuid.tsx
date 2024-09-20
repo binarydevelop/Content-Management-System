@@ -249,6 +249,7 @@ export default function EditEvent() {
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <label className="block text-lg text-gray-700 mb-2">Cover Image</label>
+            <img src={data?.data.coverImageUrl} className='object-contain object-cover h-48 w-96'/>
             <input
               type="file"
               name="coverImage"

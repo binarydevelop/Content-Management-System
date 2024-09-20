@@ -695,7 +695,7 @@ const loader$4 = async ({ request }) => {
 function Workshop() {
   const data = useLoaderData();
   return /* @__PURE__ */ jsxs("div", { className: "p-4", children: [
-    /* @__PURE__ */ jsx("h1", { className: "text-2xl font-bold mb-4 text-center", children: "Workshops" }),
+    /* @__PURE__ */ jsx("h1", { className: "text-2xl font-bold mb-4 text-center", children: "Thoughtful Thursdays" }),
     /* @__PURE__ */ jsxs("div", { className: "flex flex-col items-center", children: [
       /* @__PURE__ */ jsx("div", { className: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl w-full", children: data.events.map((event) => /* @__PURE__ */ jsxs(
         Link,
@@ -1653,7 +1653,7 @@ const Events$1 = () => {
           className: "relative group flex flex-col items-center",
           children: [
             /* @__PURE__ */ jsx("div", { className: "flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg", children: /* @__PURE__ */ jsx(WrenchScrewdriverIcon, { className: "w-16 h-16 text-gray-700" }) }),
-            /* @__PURE__ */ jsx("div", { className: "mt-2 text-center text-lg font-semibold", children: "Workshops" })
+            /* @__PURE__ */ jsx("div", { className: "mt-2 text-center text-lg font-semibold", children: "Thoughtful Thursdays" })
           ]
         }
       ),
@@ -1675,7 +1675,7 @@ const Events$1 = () => {
           className: "relative group flex flex-col items-center",
           children: [
             /* @__PURE__ */ jsx("div", { className: "flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg", children: /* @__PURE__ */ jsx(PuzzlePieceIcon, { className: "w-16 h-16 text-gray-700" }) }),
-            /* @__PURE__ */ jsx("div", { className: "mt-2 text-center text-lg font-semibold", children: "Games" })
+            /* @__PURE__ */ jsx("div", { className: "mt-2 text-center text-lg font-semibold", children: "Fun Friday" })
           ]
         }
       )
@@ -1914,10 +1914,10 @@ const loader = async ({ request }) => {
   const perPage = parseInt(url.searchParams.get("perPage") || "25", 10);
   return fetchEvents({ page, perPage, eventType: "games" });
 };
-function Games() {
+function Fun Friday() {
   const data = useLoaderData();
   return /* @__PURE__ */ jsxs("div", { className: "p-4", children: [
-    /* @__PURE__ */ jsx("h1", { className: "text-2xl font-bold mb-4 text-center", children: "Games" }),
+    /* @__PURE__ */ jsx("h1", { className: "text-2xl font-bold mb-4 text-center", children: "Fun Friday" }),
     /* @__PURE__ */ jsxs("div", { className: "flex flex-col items-center", children: [
       /* @__PURE__ */ jsx("div", { className: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl w-full", children: data.events.map((event) => /* @__PURE__ */ jsxs(
         Link,
@@ -1947,7 +1947,7 @@ function Games() {
 }
 const route10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: Games,
+  default: Fun Friday,
   loader
 }, Symbol.toStringTag, { value: "Module" }));
 const Events = () => {
@@ -1985,7 +1985,7 @@ const Events = () => {
           className: "relative group flex flex-col items-center",
           children: [
             /* @__PURE__ */ jsx("div", { className: "flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg", children: /* @__PURE__ */ jsx(WrenchScrewdriverIcon, { className: "w-16 h-16 text-gray-700" }) }),
-            /* @__PURE__ */ jsx("div", { className: "mt-2 text-center text-lg font-semibold", children: "Workshops" })
+            /* @__PURE__ */ jsx("div", { className: "mt-2 text-center text-lg font-semibold", children: "Thoughtful Thursdays" })
           ]
         }
       ),
@@ -2007,7 +2007,7 @@ const Events = () => {
           className: "relative group flex flex-col items-center",
           children: [
             /* @__PURE__ */ jsx("div", { className: "flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg", children: /* @__PURE__ */ jsx(PuzzlePieceIcon, { className: "w-16 h-16 text-gray-700" }) }),
-            /* @__PURE__ */ jsx("div", { className: "mt-2 text-center text-lg font-semibold", children: "Games" })
+            /* @__PURE__ */ jsx("div", { className: "mt-2 text-center text-lg font-semibold", children: "Fun Friday" })
           ]
         }
       )

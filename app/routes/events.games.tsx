@@ -15,7 +15,7 @@ export default function Games() {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">Games</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Fun Friday</h1>
 
       <div className="flex flex-col items-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl w-full">

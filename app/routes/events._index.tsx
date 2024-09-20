@@ -45,7 +45,7 @@ const Events = () => {
             <WrenchScrewdriverIcon className="w-16 h-16 text-gray-700" />
           </div>
           <div className="mt-2 text-center text-lg font-semibold">
-            Workshops
+            Thoughtful Thursdays
           </div>
         </Link>
         <Link
@@ -67,7 +67,7 @@ const Events = () => {
           <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
             <PuzzlePieceIcon className="w-16 h-16 text-gray-700" />
           </div>
-          <div className="mt-2 text-center text-lg font-semibold">Games</div>
+          <div className="mt-2 text-center text-lg font-semibold">Fun Friday</div>
         </Link>
       </div>
 

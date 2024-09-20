@@ -15,11 +15,11 @@ export default function Workshop() {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">Workshops</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Thoughtful Thursdays</h1>
 
       <div className="flex flex-col items-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl w-full">
-          {data.events.map((event: any) => (
+          {data.events.map((event: any) => ( 
             <Link
               to={`/events/${event.uuid}`}
               key={event.uuid}
@@ -40,11 +40,6 @@ export default function Workshop() {
           {data.page > 1 && (
             <a href={`?page=${data.page - 1}&perPage=${data.perPage}`} className="btn">
               Previous
-            </a>
-          )}
-          {data.hasNextPage && (
-            <a href={`?page=${data.page + 1}&perPage=${data.perPage}`} className="btn">
-              Next
             </a>
           )}
         </div>
