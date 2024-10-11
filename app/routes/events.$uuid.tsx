@@ -202,6 +202,31 @@ export default function MovieDetails() {
           </div>
         )}
       </div>
+      <div className="mt-8">
+        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Event Registrations</h2>
+        <table className="min-w-full border-collapse border border-gray-300">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="border border-gray-300 p-4">User</th>
+              <th className="border border-gray-300 p-4">Phone</th>
+              <th className="border border-gray-300 p-4">Ticket URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.data.eventRegistrations.map((registration:any, index:any) => (
+              <tr key={index} className="hover:bg-gray-100">
+                <td className="border border-gray-300 p-4">{registration.user.name}</td>
+                <td className="border border-gray-300 p-4">{registration.user.phone}</td>
+                <td className="border border-gray-300 p-4">
+                  <a href={registration.ticket.ticketUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+                    View Ticket
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        </div>
     </div>
   );
 }

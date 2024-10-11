@@ -40,7 +40,6 @@ export async function fetchEventDetails(uuid: string) {
       Authorization: `Bearer ${process.env.API_AUTH_TOKEN}`,
     },
   });
-
   if (!response.ok) {
     throw new Error("Failed to fetch movie details");
   }

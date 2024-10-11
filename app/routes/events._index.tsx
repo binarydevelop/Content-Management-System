@@ -78,7 +78,7 @@ const Events = () => {
       <div className="grid grid-cols-3 mx-auto gap-4">
         <Link
           // to="/events/registrations"
-          to="/events"
+          to="/events/registrations"
           className="relative group flex flex-col items-center"
         >
           <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl  transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-2xl">
@@ -90,7 +90,7 @@ const Events = () => {
         </Link>
         <Link
           // to="/events/calendar"
-          to="/events"
+          to="/events/calendar"
           className="relative group flex flex-col items-center"
         >
           <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl  transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-2xl">
