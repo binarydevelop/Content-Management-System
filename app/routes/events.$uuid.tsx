@@ -154,11 +154,11 @@ export default function MovieDetails() {
         </p>
         {(data.data.eventMediaType === "movie" ||
           data.data.eventMediaType === "other") && (
-          <p className="text-lg text-gray-700 mb-2">
-            <strong className="text-gray-900">Priority:</strong>{" "}
-            {data.data.priority ?? "N/A"}
-          </p>
-        )}
+            <p className="text-lg text-gray-700 mb-2">
+              <strong className="text-gray-900">Priority:</strong>{" "}
+              {data.data.priority ?? "N/A"}
+            </p>
+          )}
       </div>
 
       {/* Images Row */}
@@ -213,20 +213,31 @@ export default function MovieDetails() {
             </tr>
           </thead>
           <tbody>
-            {data.data.eventRegistrations.map((registration:any, index:any) => (
+            {data.data.eventRegistrations.map((registration: any, index: any) => (
               <tr key={index} className="hover:bg-gray-100">
                 <td className="border border-gray-300 p-4">{registration.user.name}</td>
                 <td className="border border-gray-300 p-4">{registration.user.phone}</td>
                 <td className="border border-gray-300 p-4">
-                  <a href={registration.ticket.ticketUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
-                    View Ticket
-                  </a>
+                  {/* Check if ticketUrl exists */}
+                  {registration?.ticket?.ticketUrl ? (
+                    <a
+                      href={registration.ticket.ticketUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 underline"
+                    >
+                      View Ticket
+                    </a>
+                  ) : (
+                    "No Ticket Available" // Optional fallback if no ticketUrl is present
+                  )}
                 </td>
               </tr>
             ))}
           </tbody>
+
         </table>
-        </div>
+      </div>
     </div>
   );
 }

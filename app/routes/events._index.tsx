@@ -9,11 +9,13 @@ import {
   PlusCircleIcon,
   CalendarDaysIcon,
 } from "@heroicons/react/24/solid";
+import { TicketIcon } from "@heroicons/react/16/solid";
+import { BellIcon } from "@heroicons/react/20/solid";
 
 const Events = () => {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-10">
         <h1 className="text-2xl font-bold">Event Categories</h1>
         <Link
           to="/events/create"
@@ -38,36 +40,33 @@ const Events = () => {
           </div>
         </Link>
         <Link
-          to="/events/workshop"
-          className="relative group flex flex-col items-center"
-        >
-          <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
-            <WrenchScrewdriverIcon className="w-16 h-16 text-gray-700" />
-          </div>
-          <div className="mt-2 text-center text-lg font-semibold">
-            Thoughtful Thursdays
-          </div>
-        </Link>
-        <Link
-          // to="/events/pop-up-club"
-          to="/events"
+          to="/events/sunday-club"
           className="relative group flex flex-col items-center"
         >
           <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
             <SparklesIcon className="w-16 h-16 text-gray-700" />
           </div>
           <div className="mt-2 text-center text-lg font-semibold">
-            Pop-up Club
+            The Sunday Club
           </div>
         </Link>
         <Link
-          to="/events/games"
+          to="/events/tambola"
           className="relative group flex flex-col items-center"
         >
           <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
-            <PuzzlePieceIcon className="w-16 h-16 text-gray-700" />
+            <TicketIcon className="w-16 h-16 text-gray-700" />
           </div>
-          <div className="mt-2 text-center text-lg font-semibold">Fun Friday</div>
+          <div className="mt-2 text-center text-lg font-semibold">Tambola Time</div>
+        </Link>
+        <Link
+          to="/events/online-activites"
+          className="relative group flex flex-col items-center"
+        >
+          <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
+            <BellIcon className="w-16 h-16 text-gray-700" />
+          </div>
+          <div className="mt-2 text-center text-lg font-semibold">Online Activites</div>
         </Link>
       </div>
 

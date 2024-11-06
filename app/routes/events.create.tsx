@@ -35,10 +35,10 @@ const mapEventType = (type: string) => {
             return "movie";
         case "pop-up-club":
             return "pop-up-club";
-        case "workshop":
-            return "online";
-        case "games":
-            return "games";
+        case "tambola":
+            return "tambola";
+        case "joy-time":
+            return "joy-time"
         default:
             return "unknown";
     }
@@ -50,6 +50,10 @@ export default function CreateEvent() {
     const [eventMediaType, setEventMediaType] = useState("movie");
     const [isActive, setIsActive] = useState(true);
     const [isActiveWeb, setIsActiveWeb] = useState(true);
+    // States for the modal
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
+    const [isSuccess, setIsSuccess] = useState(false); // Track success or failure
 
     const handleEventTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setEventType(e.target.value);
@@ -58,6 +62,31 @@ export default function CreateEvent() {
     const handleEventMediaTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setEventMediaType(e.target.value);
     };
+
+        // Simulate form submission (you can replace this with actual submission logic)
+        const handleFormSubmit = (e: React.FormEvent) => {
+            e.preventDefault();
+    
+            // Simulating a form submission result (success or failure)
+            const isFormSubmissionSuccessful = Math.random() > 0.5; // Random success/failure for demo purposes
+    
+            if (isFormSubmissionSuccessful) {
+                setIsSuccess(true);
+                setModalMessage("Event created successfully!");
+            } else {
+                setIsSuccess(false);
+                setModalMessage("Failed to create event. Please try again.");
+            }
+    
+            setIsModalOpen(true);
+        };
+    
+        const closeModal = () => {
+            setIsModalOpen(false);
+            if (isSuccess) {
+                navigate("/events"); // Redirect to events page on success
+            }
+        };
 
     return (
         <div className="container mx-auto py-8">
@@ -75,10 +104,10 @@ export default function CreateEvent() {
                             onChange={handleEventTypeChange}
                             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
                         >
-                            <option value="cinema hall">Cinema Hall</option>
-                            <option value="workshop">Workshop</option>
-                            {/* <option value="pop-up-club">Pop-up Club</option> */}
-                            <option value="games">Fun Friday</option>
+                            <option value="cinema hall"> Cinema Hall</option>
+                            <option value="tambola"> Tambola Time</option>
+                            <option value="joy-time"> Online Activites</option>
+                            <option value="pop-up-club"> The Sunday Club</option>
                         </select>
                     </div>
 
@@ -96,6 +125,7 @@ export default function CreateEvent() {
                             <option value="movie">Movie</option>
                             <option value="other">Other</option>
                             <option value="carnival">Carnival</option>
+                            <option value="tambola">Tambola</option>
                         </select>
                     </div>
 
@@ -262,8 +292,7 @@ export default function CreateEvent() {
                             </div>
                         </>
                     )}
-
-                    {eventType === "workshop" && (
+                    {eventType === "joy-time" && (
                         <>
                             {/* Workshop Specific Fields */}
                             <div>
@@ -609,32 +638,9 @@ export default function CreateEvent() {
 
                         </>
                     )}
-                    {eventType === "games" && (
+                    {eventType === "tambola" && (
                         <>
-                            {/* Workshop Specific Fields */}
-                            <div>
-                                <label htmlFor="title" className="block font-medium text-xl text-gray-700">
-                                    Title
-                                </label>
-                                <input
-                                    type="text"
-                                    id="title"
-                                    name="title"
-                                    required
-                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="description" className="block font-medium text-xl text-gray-700">
-                                    Description
-                                </label>
-                                <textarea
-                                    id="description"
-                                    name="description"
-                                    rows={4}
-                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                                />
-                            </div>
+                            {/* Tambola Specific Fields */}
                             <div>
                                 <label htmlFor="eventStartDate" className="block font-medium text-xl text-gray-700">
                                     Event Start Date
@@ -738,17 +744,6 @@ export default function CreateEvent() {
                                 </div>
                             </div>
                             <div>
-                                <label htmlFor="priority" className="block font-medium text-xl text-gray-700">
-                                    Priority
-                                </label>
-                                <input
-                                    type="number"
-                                    id="priority"
-                                    name="priority"
-                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                                />
-                            </div>
-                            <div>
                                 <label htmlFor="isActive" className="block font-medium text-xl text-gray-700">
                                     Is Active
                                 </label>
@@ -795,6 +790,25 @@ export default function CreateEvent() {
                     </div>
                 </Form>
             </div>
+             {/* Modal */}
+             {isModalOpen && (
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center z-50">
+                    <div className="bg-white rounded-lg shadow-lg p-6 w-96">
+                        <h2 className={`text-2xl font-semibold ${isSuccess ? 'text-green-600' : 'text-red-600'}`}>
+                            {isSuccess ? "Success!" : "Error!"}
+                        </h2>
+                        <p className="mt-4 text-lg text-gray-700">{modalMessage}</p>
+                        <div className="mt-6 flex justify-end">
+                            <button
+                                onClick={closeModal}
+                                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                            >
+                                {isSuccess ? "Go to Events" : "Close"}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

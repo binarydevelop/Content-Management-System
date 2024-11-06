@@ -2,16 +2,22 @@
 export async function fetchEvents({
   page,
   perPage,
-  eventType
+  eventType,
+  startDate,
+  endDate
 }: {
   page: number;
   perPage: number;
   eventType: string;
+  startDate: string;
+  endDate: string;
 }) {
   const apiUrl = new URL(`${process.env.API_BASE_URL}/${process.env.API_VERSION}/events/listing`);
   apiUrl.searchParams.append("page", page.toString());
   apiUrl.searchParams.append("perPage", perPage.toString());
   apiUrl.searchParams.append("eventType", eventType);
+  apiUrl.searchParams.append("startDate", startDate); 
+  apiUrl.searchParams.append("endDate", endDate)
   const response = await fetch(apiUrl.toString(), {
     headers: {
       accept: "application/json",

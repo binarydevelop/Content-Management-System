@@ -1,20 +1,20 @@
-// routes/events.cinema.tsx
-import { Link, Outlet, useLoaderData, useSearchParams } from "@remix-run/react";
-import { useEffect, useState } from "react";
+import { Link, useLoaderData, useSearchParams } from "@remix-run/react";
+import { useState, useEffect } from "react";
 import { fetchEvents } from "~/utils/events-api";
 import { getStartAndEndOfMonth } from "~/utils/helper";
 
+// Update loader to accept the startDate query parameter
 export const loader = async ({ request }: { request: Request }) => {
   const url = new URL(request.url);
   const page = parseInt(url.searchParams.get("page") || "1", 10);
   const perPage = parseInt(url.searchParams.get("perPage") || "25", 10);
-  const startDate = url.searchParams.get("startDate") || `${new Date()}`;
+  const startDate = url.searchParams.get("startDate") || `${new Date()}`; // Fallback to current date
   const endDate = url.searchParams.get("endDate") || `${new Date()}`;
 
-  return fetchEvents({ page, perPage, eventType: 'tambola', startDate, endDate });
+  return fetchEvents({ page, perPage, eventType: 'pop-up-club', startDate, endDate });
 };
 
-export default function Tambola() {
+export default function SundayClub() {
   const data: any = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedMonth, setSelectedMonth] = useState<number>(new Date().getMonth()); // Default to current month
@@ -28,9 +28,12 @@ export default function Tambola() {
   const handleMonthChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedMonth(parseInt(event.target.value)); // Update the selected month state
   };
+
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">Tambola</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">The Sunday Club</h1>
+
+      {/* Month Dropdown */}
       <div className="mb-4 flex justify-center">
         <select
           value={selectedMonth}
@@ -44,6 +47,8 @@ export default function Tambola() {
           ))}
         </select>
       </div>
+
+      {/* Event List */}
       <div className="flex flex-col items-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl w-full">
           {data.events.map((event: any) => (
@@ -57,7 +62,9 @@ export default function Tambola() {
                 alt={event.title}
                 className="mb-2 w-full h-auto rounded"
               />
-              <h2 className="text-xl font-bold mb-2 text-center">{`${new Date(event.eventStartDate).toDateString()}`}</h2>
+              <h2 className="text-xl font-bold mb-2 text-center">{event.title}</h2>
+              <hr />
+              <h2 className="text-xl font-bold mb-2 text-center">{`${new Date(event.eventStartDate).toDateString()}` }</h2>
             </Link>
           ))}
         </div>

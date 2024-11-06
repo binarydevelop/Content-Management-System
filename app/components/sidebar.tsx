@@ -25,7 +25,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="mb-4">
-            <Link to="/posts" className="flex items-center py-2 px-4 rounded hover:bg-gray-700">
+            <Link to="/media-library" className="flex items-center py-2 px-4 rounded hover:bg-gray-700">
               <VideoCameraIcon className="w-6 h-6 mr-3" />
               Media Library
             </Link>

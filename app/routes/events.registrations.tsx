@@ -51,7 +51,7 @@ export default function EventsListing() {
               className="mb-4 w-full h-32 object-cover rounded-lg shadow-md"
             />
             <p className="text-lg text-gray-700">{event.extendedTitle}</p>
-
+            <h2 className="text-xl font-bold mb-2 text-center">{`${new Date(event.eventStartDate).toDateString()}` }</h2>
           </div>
         ))}
       </div>
