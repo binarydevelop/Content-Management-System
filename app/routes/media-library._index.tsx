@@ -4,7 +4,7 @@ import {
     SparklesIcon,
     PlusCircleIcon,
 } from "@heroicons/react/24/solid";
-import { ComputerDesktopIcon, CursorArrowRaysIcon, MapIcon, MusicalNoteIcon, NewspaperIcon, PaintBrushIcon, TicketIcon } from "@heroicons/react/16/solid";
+import { ComputerDesktopIcon, CursorArrowRaysIcon, MapIcon, MicrophoneIcon, MusicalNoteIcon, NewspaperIcon, PaintBrushIcon, TicketIcon } from "@heroicons/react/16/solid";
 
 const Media = () => {
     return (
@@ -34,7 +34,7 @@ const Media = () => {
                     </div>
                 </Link>
                 <Link
-                    to="/media-librarys/guide"
+                    to="/media-library/guide"
                     className="relative group flex flex-col items-center"
                 >
                     <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
@@ -57,7 +57,7 @@ const Media = () => {
                     </div>
                 </Link>
                 <Link
-                    to="/media-librarys/music"
+                    to="/media-library/music"
                     className="relative group flex flex-col items-center"
                 >
                     <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
@@ -84,23 +84,32 @@ const Media = () => {
                     <div className="mt-2 text-center text-lg font-semibold">Hobbies</div>
                 </Link>
                 <Link
-                to="/media-library/games"
-                className="relative group flex flex-col items-center"
-            >
-                <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
-                    <TicketIcon className="w-16 h-16 text-gray-700" />
-                </div>
-                <div className="mt-2 text-center text-lg font-semibold">Games</div>
-            </Link>
-            <Link
-                to="/media-library/goodnews"
-                className="relative group flex flex-col items-center"
-            >
-                <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
-                    <NewspaperIcon className="w-16 h-16 text-gray-700" />
-                </div>
-                <div className="mt-2 text-center text-lg font-semibold"> News</div>
-            </Link>
+                    to="/media-library/games"
+                    className="relative group flex flex-col items-center"
+                >
+                    <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
+                        <TicketIcon className="w-16 h-16 text-gray-700" />
+                    </div>
+                    <div className="mt-2 text-center text-lg font-semibold">Games</div>
+                </Link>
+                <Link
+                    to="/media-library/good-talks"
+                    className="relative group flex flex-col items-center"
+                >
+                    <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
+                        <MicrophoneIcon className="w-16 h-16 text-gray-700" />
+                    </div>
+                    <div className="mt-2 text-center text-lg font-semibold"> Good Talks</div>
+                </Link>
+                <Link
+                    to="/media-library/good-news"
+                    className="relative group flex flex-col items-center"
+                >
+                    <div className="flex items-center justify-center h-48 w-full rounded-xl shadow-2xl bg-blend-hard-light transform transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:shadow-lg">
+                        <NewspaperIcon className="w-16 h-16 text-gray-700" />
+                    </div>
+                    <div className="mt-2 text-center text-lg font-semibold"> Good News</div>
+                </Link>
             </div>
 
             {/* Horizontal line to separate sections */}

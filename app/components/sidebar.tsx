@@ -4,6 +4,7 @@ import React from "react";
 import { Link } from "@remix-run/react";
 import { CalendarIcon, VideoCameraIcon, UserIcon  } from "@heroicons/react/16/solid";
 import { HomeIcon } from "@heroicons/react/24/solid";
+import { ChartBarIcon } from "@heroicons/react/20/solid";
 
 const Sidebar = () => {
   return (
@@ -34,6 +35,12 @@ const Sidebar = () => {
             <Link to="/" className="flex items-center py-2 px-4 rounded hover:bg-gray-700">
               <UserIcon className="w-6 h-6 mr-3" />
               Users
+            </Link>
+          </li>
+          <li className="mb-4">
+            <Link to="/media-library" className="flex items-center py-2 px-4 rounded hover:bg-gray-700">
+              <ChartBarIcon className="w-6 h-6 mr-3" />
+              Event categories
             </Link>
           </li>
           <hr className="my-4 border-gray-700" />

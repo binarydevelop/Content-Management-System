@@ -7,7 +7,7 @@ export async function fetchMediaLibrary({
     page: number;
     perPage: number;
     mediaCategory: string;
-    languageCode: any;
+    languageCode?: any;
   }) {
     const apiUrl = new URL(`${process.env.API_BASE_URL}/${process.env.API_VERSION}/media-library`);
     apiUrl.searchParams.append("page", page.toString());
@@ -15,13 +15,13 @@ export async function fetchMediaLibrary({
     apiUrl.searchParams.append("categoryCode", mediaCategory);
     apiUrl.searchParams.append("languageCode", languageCode);
     apiUrl.searchParams.append("order", 'desc');
+
     const response = await fetch(apiUrl.toString(), {
       headers: {
         accept: "application/json",
         Authorization: `Bearer ${process.env.API_AUTH_TOKEN}`,
       },
     });
-  console.log(response)
     if (!response.ok) {
       throw new Error(`Failed to fetch ${mediaCategory}`);
     }
